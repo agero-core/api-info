@@ -12,7 +12,7 @@ API Info is a library for composing API information.
 IAsyncApiInfoComposer composer = 
 	new AsyncApiInfoComposer(
 		ConstantHelper.ApplicationName,
-        ConstantHelper.ApplicationVersion,
+                ConstantHelper.ApplicationVersion,
 		async () => await Task.FromResult<object>(ConstantHelper.CustomerApplicaitonInformation));
 		
 ApiInformation apiInformation = await composer.GetAsync();
@@ -23,7 +23,8 @@ var json = JsonConvert.SerializeObject(apiInformation);
 **Synchronous Usage:**
 ```csharp
 IApiInfoComposer composer = 
-	new ApiInfoComposer(ConstantHelper.ApplicationName,
+	new ApiInfoComposer(
+	        ConstantHelper.ApplicationName,
 		ConstantHelper.ApplicationVersion, 
 		() => ConstantHelper.CustomerApplicaitonInformation);
 
