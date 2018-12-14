@@ -12,7 +12,8 @@ namespace Agero.Core.ApiInfo.Tests
         public async Task AsynchronousUsage()
         {
             IAsyncApiInfoComposer composer = new AsyncApiInfoComposer(ConstantHelper.ApplicationName,
-                ConstantHelper.ApplicationVersion, async () => await Task.FromResult<object>(null));
+                ConstantHelper.ApplicationVersion,
+                async () => await Task.FromResult<object>(ConstantHelper.CustomerApplicationInformation));
 
             ApiInformation apiInformation = await composer.GetAsync();
 
@@ -23,7 +24,8 @@ namespace Agero.Core.ApiInfo.Tests
         public void SynchronousUsage()
         {
             IApiInfoComposer composer = new ApiInfoComposer(ConstantHelper.ApplicationName,
-                ConstantHelper.ApplicationVersion, () => null);
+                ConstantHelper.ApplicationVersion,
+                () => ConstantHelper.CustomerApplicationInformation);
 
             ApiInformation apiInformation = composer.Get();
 
