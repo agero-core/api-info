@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agero.Core.ApiInfo", "Agero.Core.ApiInfo\Agero.Core.ApiInfo.csproj", "{B0BCFB8E-3193-4218-B004-36C2B3626ACD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agero.Core.ApiInfo.Tests", "Agero.Core.ApiInfo.Tests\Agero.Core.ApiInfo.Tests.csproj", "{ADB0321D-5A95-4EB1-8E04-04CD70450853}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B0BCFB8E-3193-4218-B004-36C2B3626ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0BCFB8E-3193-4218-B004-36C2B3626ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0BCFB8E-3193-4218-B004-36C2B3626ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB0321D-5A95-4EB1-8E04-04CD70450853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB0321D-5A95-4EB1-8E04-04CD70450853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB0321D-5A95-4EB1-8E04-04CD70450853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB0321D-5A95-4EB1-8E04-04CD70450853}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
