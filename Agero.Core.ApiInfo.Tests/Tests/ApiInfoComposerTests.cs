@@ -28,7 +28,7 @@ namespace Agero.Core.ApiInfo.Tests
         {
             //Arrange
             IApiInfoComposer composer = new ApiInfoComposer(ConstantHelper.ApplicationName,
-                ConstantHelper.ApplicationVersion, () => ConstantHelper.CustomerApplicationInformation);
+                ConstantHelper.ApplicationVersion, () => ConstantHelper.CustomApplicationInformation);
 
             //Act
             ApiInformation apiInformation = composer.Get();

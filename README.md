@@ -13,7 +13,7 @@ IAsyncApiInfoComposer composer =
 	new AsyncApiInfoComposer(
 		ConstantHelper.ApplicationName,
                 ConstantHelper.ApplicationVersion,
-		async () => await Task.FromResult<object>(ConstantHelper.CustomerApplicaitonInformation));
+		async () => await Task.FromResult<object>(ConstantHelper.CustomApplicationInformation));
 		
 ApiInformation apiInformation = await composer.GetAsync();
 
@@ -26,7 +26,7 @@ IApiInfoComposer composer =
 	new ApiInfoComposer(
 	        ConstantHelper.ApplicationName,
 		ConstantHelper.ApplicationVersion, 
-		() => ConstantHelper.CustomerApplicaitonInformation);
+		() => ConstantHelper.CustomApplicationInformation);
 
 ApiInformation apiInformation = composer.Get();
 
@@ -58,7 +58,7 @@ The above code generates the below json.
    },
    "application":{  
       "customApplicationDescription":"Application description specific to the application",
-      "customerApplicationInfo":"Application Info specific to the application"
+      "customApplicationInfo":"Application Info specific to the application"
    }
 }
 ```
