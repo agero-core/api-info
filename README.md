@@ -53,7 +53,6 @@ The above code generates the below json.
       "ipAddresses":[  
          "123.123.1.0"
       ],
-      "ec2InstanceId":null,
       "isServerGC":false
    },
    "application":{  

@@ -13,7 +13,6 @@ namespace Agero.Core.ApiInfo
     public abstract class BaseApiInfoComposer
     {
         private readonly IRESTCaller _restCaller = new RESTCaller();
-        private readonly Lazy<string> _ec2InstanceId;
 
         private readonly string _name;
         private readonly string _version;
@@ -28,8 +27,6 @@ namespace Agero.Core.ApiInfo
 
             _name = name;
             _version = version;
-
-            _ec2InstanceId = new Lazy<string>(() => GetAwsMetaDataValue("instance-id"));
         }
         
         private string GetAwsMetaDataValue(string key)
@@ -66,7 +63,6 @@ namespace Agero.Core.ApiInfo
                     utcTime: DateTimeOffset.UtcNow,
                     hostName: Dns.GetHostName(),
                     ipAddresses: GetIpAddresses(),
-                    ec2InstanceId: _ec2InstanceId.Value,
                     isServerGC: GCSettings.IsServerGC
                 );
         }

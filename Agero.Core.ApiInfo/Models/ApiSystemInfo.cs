@@ -11,7 +11,7 @@ namespace Agero.Core.ApiInfo
         /// <summary>Constructor</summary>
         public ApiSystemInfo(string userName, string userDomainName, string operatingSystem, bool is64BitOperatingSystem, 
             int processorCount, string clrVersion, bool is64BitProcess, string machineName, DateTimeOffset localTime, DateTimeOffset utcTime, 
-            string hostName, string[] ipAddresses, string ec2InstanceId, bool isServerGC)
+            string hostName, string[] ipAddresses, bool isServerGC)
         {
             Check.ArgumentIsNull(ipAddresses, "ipAddresses");
 
@@ -27,7 +27,6 @@ namespace Agero.Core.ApiInfo
             UtcTime = utcTime;
             HostName = hostName;
             IpAddresses = ipAddresses;
-            Ec2InstanceId = ec2InstanceId;
             IsServerGC = isServerGC;
         }
 
@@ -78,10 +77,6 @@ namespace Agero.Core.ApiInfo
         /// <summary>IP addresses</summary>
         [DataMember(Name = "ipAddresses")]
         public string[] IpAddresses { get; }
-
-        /// <summary>AWS EC2 instance ID</summary>
-        [DataMember(Name = "ec2InstanceId")]
-        public string Ec2InstanceId { get; }
 
         /// <summary>Returns whether server garbage collection is enabled</summary>
         [DataMember(Name = "isServerGC")]
