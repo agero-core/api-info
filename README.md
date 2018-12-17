@@ -9,34 +9,49 @@ API Info is a library for composing API information.
 
 **Asynchronous Usage:**
 ```csharp
-IAsyncApiInfoComposer composer = 
-	new AsyncApiInfoComposer(
-		ConstantHelper.ApplicationName,
-                ConstantHelper.ApplicationVersion,
-		async () => await Task.FromResult<object>(ConstantHelper.CustomApplicationInformation));
-		
+//Create instance:
+IAsyncApiInfoComposer composer =
+      new AsyncApiInfoComposer(
+         name: "TestApplication",
+         version: "1.2.3.4",
+         getApplicationInfoAsync: async () => await Task.FromResult<object>(new
+         {
+            customApplicationDescription = "Application description specific to the application",
+            customApplicationInfo = "Application Info specific to the application"
+         }));
+
+//Get Info:
 ApiInformation apiInformation = await composer.GetAsync();
 
+//Serialize:
 var json = JsonConvert.SerializeObject(apiInformation);
 ```
 
 **Synchronous Usage:**
 ```csharp
-IApiInfoComposer composer = 
-	new ApiInfoComposer(
-	        ConstantHelper.ApplicationName,
-		ConstantHelper.ApplicationVersion, 
-		() => ConstantHelper.CustomApplicationInformation);
+//Create instance:
+IApiInfoComposer composer =
+      new ApiInfoComposer(
+         name: "TestApplication",
+         version: "1.2.3.4",
+         getApplicationInfo: () => new
+         {
+            customApplicationDescription = "Application description specific to the application",
+            customApplicationInfo = "Application Info specific to the application"
+         }
+      );
 
+//Get Info:
 ApiInformation apiInformation = composer.Get();
 
+//Serialize:
 var json = JsonConvert.SerializeObject(apiInformation);
 ```
 
 The above code generates the below json.
 ```json
 {  
-   "name":"TestApplicaton",
+   "name":"TestApplication",
    "version":"1.2.3.4",
    "system":{  
       "userName":"DomainName\\user",
