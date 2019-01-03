@@ -1,6 +1,4 @@
 ﻿using Agero.Core.Checker;
-using Agero.Core.RestCaller;
-using Agero.Core.RestCaller.Extensions;
 using System;
 using System.Linq;
 using System.Net;
@@ -12,8 +10,6 @@ namespace Agero.Core.ApiInfo
     /// <summary>Base API information composer</summary>
     public abstract class BaseApiInfoComposer
     {
-        private readonly IRESTCaller _restCaller = new RESTCaller();
-
         private readonly string _name;
         private readonly string _version;
 
@@ -29,29 +25,12 @@ namespace Agero.Core.ApiInfo
             _version = version;
         }
         
-        private string GetAwsMetaDataValue(string key)
-        {
-            Check.ArgumentIsNullOrWhiteSpace(key, "key");
-
-            try
-            {
-                var uri = new Uri($"http://169.254.169.254/latest/meta-data/{key}");
-                var response = _restCaller.Get(uri, timeout: 100);
-
-                return response.HttpStatusCode != HttpStatusCode.OK ? null : response.Text;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private ApiSystemInfo CreateSystemInfo()
+        private static ApiSystemInfo CreateSystemInfo()
         {
             return 
                 new ApiSystemInfo
                 (
-                    userName: Environment.UserName, //WindowsIdentity.GetCurrent().Name,
+                    userName: Environment.UserName,
                     userDomainName: Environment.UserDomainName,
                     operatingSystem: Environment.OSVersion.VersionString,
                     is64BitOperatingSystem: Environment.Is64BitOperatingSystem,
@@ -74,9 +53,7 @@ namespace Agero.Core.ApiInfo
                 return new string[] { };
 
             var hostEntry = Dns.GetHostEntry(hostName);
-            if (hostEntry == null)
-                return new string[] { };
-
+            
             return
                 hostEntry.AddressList
                     .Where(a => a.AddressFamily == AddressFamily.InterNetwork)

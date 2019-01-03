@@ -27,7 +27,6 @@
 
     <ItemGroup>
       <PackageReference Include="Agero.Core.Checker" Version="1.0.11" />
-      <PackageReference Include="Agero.Core.RestCaller" Version="1.0.14" />
     </ItemGroup>
 
 </Project>
